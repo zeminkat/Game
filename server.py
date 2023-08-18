@@ -3,7 +3,7 @@ import sqlite3 as sql
 def Server():
     server_list=list()
     server_list2=list()
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("db.db")
     cursor=connect.cursor()
     cursor.execute("SELECT id FROM players")
     listx=cursor.fetchall()
@@ -17,7 +17,7 @@ def Server():
     return server_list2
 def Npc():
     npc_list=list()
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\denemetaban.db")
+    connect=sql.connect("db.db")
     cursor=connect.cursor()
     cursor.execute("SELECT * FROM npc")
     npc_list=cursor.fetchall()
