@@ -3,7 +3,7 @@ import random
 from operator import itemgetter
 def stats_xp():
     liste=list()
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("db.db")
     cursor=connect.cursor()
     cursor.execute("SELECT username,xp,id,team FROM players")
     data=cursor.fetchall()
@@ -16,7 +16,7 @@ def stats_xp():
         print("{}....[{}]{} Tecrübe Puanı:{}".format(i+1,liste[i][3],liste[i][0],liste[i][1]))
 def stats_team():
     liste=list()
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("db.db")
     cursor=connect.cursor()
     cursor.execute("SELECT teamname,id FROM teams")
     data=cursor.fetchall()
@@ -34,7 +34,7 @@ def stats_team():
         print("{}.{} Filosu Toplam Tecrübe Puanı:{}".format(i+1,liste[i][0],liste[i][2]))
 def sunk():
     liste=list()
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("db.db")
     cursor=connect.cursor()
     cursor.execute("SELECT username,sunk,id FROM players")
     data=cursor.fetchall()
@@ -47,7 +47,7 @@ def sunk():
         print("{}.{} Batırma Sayısı:{}".format(i + 1, liste[i][0], liste[i][1]))
 def npcsunk():
     liste=list()
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("db.db")
     cursor=connect.cursor()
     cursor.execute("SELECT username,npcsunk,id,team FROM players")
     data=cursor.fetchall()
@@ -60,7 +60,7 @@ def npcsunk():
         print("{}....[{}]{} NPC Batırma Sayısı:{}".format(i + 1, liste[i][3], liste[i][0], liste[i][1]))
 def money_stats():
     liste=list()
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("db.db")
     cursor=connect.cursor()
     cursor.execute("SELECT username,money,id,team FROM players")
     data=cursor.fetchall()
