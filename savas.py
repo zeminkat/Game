@@ -15,7 +15,7 @@ def fight(a=0,b=0):
     x=a;xx=b
     firstall=list();twoall=list()
     players=randomplayer()
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\\denemetaban.db")
     cursor=connect.cursor()
     cursor.execute("SELECT * FROM players WHERE id={}".format(players[0]))
     first=cursor.fetchall()
@@ -78,7 +78,7 @@ def xpfight():
             while True:
                 print(loop)
                 winner=fight()
-                connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+                connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\\denemetaban.db")
                 cursor=connect.cursor()
                 cursor.execute("SELECT xp,sunk,money FROM players WHERE username='{}'".format(winner))
                 data=cursor.fetchall()
@@ -100,7 +100,7 @@ def GetMoney(a=0,b=0):
     while True:
         for i in range(len(server_list)):
             print(loop)
-            connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+            connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\\denemetaban.db")
             cursor=connect.cursor()
             cursor.execute("SELECT level,cannon1,cannon2,cannon3,username,xp,money,npcsunk FROM players WHERE id={}".format(server_list[i]))
             data=cursor.fetchall()
@@ -169,7 +169,7 @@ def Event(a=0,b=0):
         while True:
             npc_list=server.Npc()
             print(loop)
-            connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+            connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\\denemetaban.db")
             cursor=connect.cursor()
             cursor.execute(
                 "SELECT level,cannon1,cannon2,cannon3,username,xp,money,npcsunk FROM players WHERE id={}".format(
