@@ -30,20 +30,20 @@ class Bots():
         self.bot_list.append([self.name,self.hp,self.prize,self.xp])
 
 def AddPlayersDB():
-    with open("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\kullanici2.txt", "r") as dosya:
+    with open("C:\\Users\path\PycharmProjects\pythonProject\dosya\kullanici2.txt", "r") as dosya:
         readtxt=dosya.read().split()
     for i in readtxt:
         Players(i)
     for i in range(len(Players.liste)):
         Players.liste[i]=tuple(Players.liste[i])
     data=Players.liste
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\\denemetaban.db")
     cursor=connect.cursor()
     for i in data:
         cursor.execute("INSERT INTO players VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)", i)
         connect.commit()
 def GetPlayers():
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\\denemetaban.db")
     cursor=connect.cursor()
     search=input("Search for Usernames")
     cursor.execute("SELECT * FROM players WHERE cannon3>5")
@@ -55,7 +55,7 @@ def CreatePlayer():
     altin=int(input("Altın miktarı gir:"))
     cannon1=int(input("35lik adet gir:"))
     newplayer=Players(ad,xp,altin,cannon1)
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\\denemetaban.db")
     cursor=connect.cursor()
     cursor.execute("INSERT INTO players VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)",Players.liste[0])
     connect.commit()
@@ -81,18 +81,18 @@ def AddAdmins():
         Players.liste[i]=tuple(Players.liste[i])
     data=Players.liste
     for i in data:
-        connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+        connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\\denemetaban.db")
         cursor=connect.cursor()
         cursor.execute("INSERT INTO players VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)", i)
         connect.commit()
 def DeletePlayer():
     username=input("Enter the username you want to remove:")
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\\denemetaban.db")
+    connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\\denemetaban.db")
     cursor=connect.cursor()
     cursor.execute("DELETE FROM players WHERE username = ?",(username,))
     connect.commit()
 def AddPlayersTeams():
-    connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\denemetaban.db")
+    connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\denemetaban.db")
     cursor=connect.cursor()
     cursor.execute("SELECT id FROM teams")
     data=cursor.fetchall()
@@ -106,7 +106,7 @@ def AddPlayersTeams():
         cursor.execute("UPDATE players SET teamid={} WHERE username='{}'".format(randomteam, data[i][0]))
         connect.commit()
 def CreateTeams():
-    with open("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\klan2.txt") as dosya:
+    with open("C:\\Users\path\PycharmProjects\pythonProject\dosya\klan2.txt") as dosya:
         data=dosya.read().split("\n")
         liste=list()
         ak=0
@@ -116,7 +116,7 @@ def CreateTeams():
                 liste.append(randomid)
                 ak+=1
         for i in range(len(data)):
-            connect=sql.connect("C:\\Users\Sedat\PycharmProjects\pythonProject\dosya\denemetaban.db")
+            connect=sql.connect("C:\\Users\path\PycharmProjects\pythonProject\dosya\denemetaban.db")
             cursor=connect.cursor()
             cursor.execute("INSERT INTO teams VALUES({},'{}',{})".format(liste[i], data[i], 0))
             connect.commit()
